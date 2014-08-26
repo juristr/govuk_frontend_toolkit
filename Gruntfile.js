@@ -6,8 +6,9 @@ module.exports = function(grunt) {
   grunt.file.recurse(
     "./stylesheets/",
     function(abspath, rootdir, subdir, filename) {
+      var relpath = ((typeof subdir !== 'undefined') ? subdir + '/' : '') + filename;
       if (filename.match(/\.scss/)) {
-        allSassFiles.push("@import '" + abspath + "';");
+        allSassFiles.push("@import '" + relpath + "';");
       }
     }
   );
